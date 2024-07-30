@@ -3,6 +3,8 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "vector": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "future": "cpp",
+        "__split_buffer": "cpp"
     }
 }

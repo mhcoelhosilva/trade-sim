@@ -910,4 +910,5 @@ CMakeFiles/trade-sim.dir/src/main.cpp.o: \
   /opt/homebrew/include/nlohmann/ordered_map.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/any \
   /opt/homebrew/include/nlohmann/detail/macro_unscope.hpp \
-  /opt/homebrew/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+  /opt/homebrew/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/thread
