@@ -62,14 +62,14 @@ public:
                         if (m_args.m_type == SimulationType::CanOnlyReceiveAtZero && m_money[i] == 0)
                             continue;
                         
-                        m_money[i]--;
-                        m_money[j]++;
+                        --m_money[i];
+                        ++m_money[j];
                     } else if (res == 1) {
                         if (m_args.m_type == SimulationType::CanOnlyReceiveAtZero && m_money[j] == 0)
                             continue;
                         
-                        m_money[j]--;
-                        m_money[i]++;
+                        --m_money[j];
+                        ++m_money[i];
                     }
                 }
             }
@@ -83,14 +83,14 @@ public:
             }
         }
 
-        int numAboveZero = 0;
-        for (auto m : m_money) {
-            if (m > 0) {
-                ++numAboveZero;
-            }
-        }
-
         if (m_args.m_verbose) {
+            int numAboveZero = 0;
+            for (auto m : m_money) {
+                if (m > 0) {
+                    ++numAboveZero;
+                }
+            }
+
             float pct = (((float)numAboveZero) / ((float)m_money.size())) * 100.0f;
             cout << "Finished simulation" << endl;
             cout << "For " << m_money.size() << " people and " << m_args.m_duration << " duration, only " << pct << "\% are left with non-zero money at the end." << endl;
