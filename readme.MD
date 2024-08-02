@@ -17,13 +17,23 @@ Explore the dynamics of randomness and wealth distribution with this trading sim
 
 ## Usage
 
-This repo uses a simple CMake setup. With cmake installed and in $PATH, enter the build directory and use the following commands:
+This repo uses a simple CMake setup. With cmake installed and in $PATH, enter the `build/debug` or `build/release` directory and use the following commands:
 
 ```
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Debug ../..
 make
 ./trade-sim
 ```
+
+or
+
+```
+cmake -DCMAKE_BUILD_TYPE=Release ../..
+make
+./trade-sim
+```
+
+Debug mode will include logging but isn't optimised and will run significantly slower.
 
 [Nlohmann-json](https://github.com/nlohmann/json) was also used for serialization. See their Readme for installation instructions.
 
@@ -63,5 +73,5 @@ For 1000 people and 100 duration, only 91.3% are left with non-zero money at the
 Finished simulation
 For 1000 people and 1000 duration, only 92.8% are left with non-zero money at the end.
 -----------
-Program took 44991 ms
+Program took 5100 ms
 ```

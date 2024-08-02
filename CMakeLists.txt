@@ -19,7 +19,7 @@ set(CMAKE_OSX_ARCHITECTURES "x86_64")
 
 project(trade-sim)
 
-set(SOURCES src/main.cpp include/simulation.hpp)
+set(SOURCES src/main.cpp src/simulation.cpp include/simulation.hpp src/logger.cpp include/logger.hpp)
 add_executable(trade-sim ${SOURCES})
 
 target_include_directories(trade-sim PUBLIC
