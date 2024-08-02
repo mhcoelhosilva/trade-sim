@@ -10,11 +10,12 @@
 
 using namespace std;
 
-enum SimulationType {
+enum class SimulationType {
     CantTradeAtZero = 0,
     CanOnlyReceiveAtZero = 1,
-    COUNT = 2
 };
+const vector<SimulationType> simulationTypes = {SimulationType::CantTradeAtZero, SimulationType::CanOnlyReceiveAtZero};
+const vector<string> simulationTypeNames = {"CantTradeAtZero", "CanOnlyReceiveAtZero"};
 
 struct SimulationArgs {
     int m_numPeople = 10;

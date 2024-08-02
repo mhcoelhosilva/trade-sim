@@ -9,25 +9,7 @@ Simulation::Simulation(SimulationArgs& args)
 }
 
 void Simulation::RunSimulation() {
-    Log("-- Starting simulation where ");
-    switch(m_args.m_type) {
-        case SimulationType::CantTradeAtZero:
-        {
-            LogLine("traders can't trade anymore once they hit zero --");
-        }
-        break;
-        case SimulationType::CanOnlyReceiveAtZero:
-        {
-            LogLine("traders can only receive money once they hit zero --");
-        }
-        break;
-        default:
-        {
-            LogLine("m_type not valid --");
-            return;
-        }
-        break;
-    }
+    LogLine("-- Starting simulation of type " + simulationTypeNames[(int)m_args.m_type] + " --");
 
     std::random_device os_seed;
     const uint32_t seed = os_seed();
@@ -61,7 +43,7 @@ void Simulation::RunSimulation() {
 
     int numAboveZero = 0;
     for (auto m : m_money) {
-        if (m > 0) {
+        if (m > 0) { 
             ++numAboveZero;
         }
     }
@@ -75,14 +57,14 @@ void Simulation::SaveOutputToJson() {
     j["num_people"] = m_money.size();
     j["initial_amount"] = m_args.m_initialAmount;
     j["m_duration"] = m_args.m_duration;
-    j["m_type"] = m_args.m_type == SimulationType::CantTradeAtZero ? "cant_trade" : "can_receive";
+    j["m_type"] = simulationTypeNames[(int)m_args.m_type];
     j["final_data"] = m_money;
 
-    string filename = "../data/output_";
+    string filename = "../../data/output_";
     filename += to_string(m_money.size()) + "_";
     filename += to_string(m_args.m_initialAmount) + "_";
     filename += to_string(m_args.m_duration) + "_";
-    filename += to_string(m_args.m_type) + ".json";
+    filename += simulationTypeNames[(int)m_args.m_type] + ".json";
 
     std::ofstream o;
     o.open(filename);
