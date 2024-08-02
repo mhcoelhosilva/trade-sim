@@ -16,10 +16,11 @@ int main()
         sim.SaveOutputToJson();
     };
 
+    const int initialAmount = 10;
     for (auto& type : simulationTypes) {
         for (int people = 100; people < 10000; people *= 10) {
             for (int duration = 100; duration < 10000; duration *= 10) {
-                SimulationArgs args = {people, 10, duration, type};
+                SimulationArgs args = {people, initialAmount, duration, type};
                 threads.emplace_back(thread(runSim, Simulation(args)));
             }
         }
