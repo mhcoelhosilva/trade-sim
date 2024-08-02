@@ -14,12 +14,19 @@ enum SimulationType {
     COUNT = 2
 };
 
+struct SimulationArgs {
+    int m_numPeople = 10;
+    int m_initialAmount = 10;
+    int m_duration = 10;
+    SimulationType m_type;
+    bool m_verbose = false;
+};
+
 class Simulation {
 public:
-    Simulation(int numPeople, int initialAmount, int duration, SimulationType type, bool verbose) 
-        : m_args({initialAmount, duration, type, verbose})
-    {
-        m_money = vector<int>(numPeople, initialAmount);
+    Simulation(SimulationArgs& args) 
+        : m_args(args) {
+        m_money = vector<int>(args.m_numPeople, args.m_initialAmount);
     }
 
     void RunSimulation() {
@@ -52,8 +59,8 @@ public:
         auto coinToss = std::bind(distribute, generator);
 
         for (int t = 0; t < m_args.m_duration; ++t) {
-            for (int i = 0; i < m_money.size() - 1; ++i) {
-                for (int j = i + 1; j < m_money.size(); ++j) {
+            for (size_t i = 0; i < m_money.size() - 1; ++i) {
+                for (size_t j = i + 1; j < m_money.size(); ++j) {
                     if (m_args.m_type == SimulationType::CantTradeAtZero && (m_money[j] == 0 || m_money[i] == 0))
                         continue;
 
@@ -118,10 +125,5 @@ public:
 
 private:
     vector<int> m_money;
-    struct Args {
-        int m_initialAmount = 10;
-        int m_duration = 10;
-        SimulationType m_type;
-        bool m_verbose = false;
-    } m_args;
+    SimulationArgs m_args;
 };
