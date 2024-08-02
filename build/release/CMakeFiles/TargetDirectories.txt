@@ -1,0 +1,3 @@
+/Users/matheussilva/dev/trade-sim/build/release/CMakeFiles/trade-sim.dir
+/Users/matheussilva/dev/trade-sim/build/release/CMakeFiles/edit_cache.dir
+/Users/matheussilva/dev/trade-sim/build/release/CMakeFiles/rebuild_cache.dir
